@@ -75,6 +75,9 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
+# Database
+.sqlite3
+
 # dotenv
 .env
 
