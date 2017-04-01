@@ -41,20 +41,11 @@ class SignupFormBase(forms.Form):
         if password != passwordVerify:
             raise forms.ValidationError('Passwords do not match')
 
-        #check if user exists
-        if User.objects.filter(username=cleaned_data.get('username')).exists():
-            raise forms.ValidationError('User already exists')
         return cleaned_data
 
 class SignupForm(SignupFormBase):
     username = UsernameField(label='')
     email = EmailField(label='')
-    
-    def save(self, data):
-        user = User.objects.create_user(data['username'],
-                                        data['email'],
-                                        data['password'])
-        return user
 
     #Used for account creation, where users must verify their email address by clicking link.
     def sendVerifyEmail(self, mailData):
@@ -77,18 +68,6 @@ class LoginForm(forms.Form):
 class DeleteUserForm(forms.ModelForm):
     is_active = forms.BooleanField(label='', initial=False)
     
-    class Meta:
-        model = User
-        fields = ['is_active']
-
-    def __init__(self, *args, **kwargs):
-        super(DeleteUserForm, self).__init__(*args, **kwargs)
-        self.fields['is_active'].help_text = "Check this box if you are sure you want to suspend this account."
-
-    def clean_is_active(self):  
-        # Reverses true/false for your form prior to validation
-        is_active = not(self.cleaned_data["is_active"])
-        return is_active
 
 """
 Below forms SetPasswordForm and ChangePasswordForm are taken directly
