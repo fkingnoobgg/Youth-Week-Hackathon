@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'hackathon',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hackathon',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +125,9 @@ STATIC_PATH = os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS = (
     STATIC_PATH,
 )
+
+try:
+    from .local_settings import *
+except ImportError:
+    print('Error: Cannot find local_settings.py\nPlease refer to the readme')
+    sys.exit()

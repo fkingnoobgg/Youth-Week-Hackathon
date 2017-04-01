@@ -21,13 +21,14 @@ class EmailField(forms.CharField):
     widget = forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email'})
 
 class UsernameField(forms.CharField):
-    widget = forms.TextInput(attrs={'class':'form-control', 'placeholder':'Student Number/Username'})
+    widget = forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username'})
 
 class PasswordField(forms.CharField):
     widget = forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Password'})
 
 class SignupFormBase(forms.Form):
     username = forms.CharField()
+    email = EmailField(label='')
     password = PasswordField(label='')
     passwordVerify = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Password Again'}))
     def clean(self):
@@ -46,18 +47,25 @@ class SignupFormBase(forms.Form):
 class SignupForm(SignupFormBase):
     username = UsernameField(label='')
     email = EmailField(label='')
-
+    def save(self, data):
+        user = User.objects.create_user(data['username'],data['email'],data['password'])
+        
+        ht_user =  HTUser()
+        ht_user.user = user
+        ht_user.activation_key = data['activation_key']
+        ht_user.save()
+    
     #Used for account creation, where users must verify their email address by clicking link.
     def sendVerifyEmail(self, mailData):
         hostname = socket.gethostbyname(socket.gethostname())
-        link = "http://"+hostname+":8000/logbook/activate/"+mailData['activation_key']
-        contxt = Context({'activation_link':link,'username':mailData['username'],'first_name':mailData['first_name']})
-        EMAIL_PATH = os.path.join(settings.BASE_DIR,'logbook','static', mailData['email_path'])
+        link = "http://"+hostname+":8000/hackathon/activate/"+mailData['activation_key']
+        contxt = Context({'activation_link':link,'username':mailData['username'],})
+        EMAIL_PATH = os.path.join(settings.BASE_DIR,'hackathon','static', mailData['email_path'])
         file = open(EMAIL_PATH,'r')
         temp = Template(file.read())
         file.close
         message = temp.render(contxt)
-        send_mail(mailData['email_subject'],message,'Guild Volunteering <volunteering@guild.uwa.edu.au>',[mailData['email']], fail_silently=False)
+        send_mail(mailData['email_subject'],message,'Homeless Services <sam.j.s.heath@gmail.com>',[mailData['email']], fail_silently=False)
         
 class LoginForm(forms.Form):
     username = UsernameField(label='')

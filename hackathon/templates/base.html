@@ -45,7 +45,7 @@
 
 <body>
     <div class="wrapper">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:50px;">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -54,7 +54,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" id="brand" href="{% url 'logbook:index' %}"><span class="glyphicon glyphicon-home hidden-xs" aria-hidden="true"></span>Homeless Services</a>
+                    <a class="navbar-brand" id="brand" href="{% url 'logbook:index' %}">Homeless Services</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -71,7 +71,7 @@
             </div>
         </nav>
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-top:50px;">
             <div class="row">
                 {% block sideblock %}{% endblock %}
                 {% block bodyblock %}{% endblock %}
