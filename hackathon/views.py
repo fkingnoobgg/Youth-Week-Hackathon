@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponse
+from django.utils.crypto import get_random_string
 from django.urls import reverse
+import hashlib
 
 from .forms import *
 
@@ -23,7 +25,7 @@ def FAQView(request):
 Handles the activation of the user's key.
 """
 def activationView(request, key):
-    return render(request, '', {})
+    return render(request, 'activation.html', {})
 
 """
 Sends a new activation link to the user signing up for the service.
@@ -32,10 +34,44 @@ def new_activation_link(request):
     return render(request, '', {})
 
 """
-Handles the signup form for the users
+Function to safely generate an activation key allowing the user verify their account.
+"""
+def generate_activation_key(username):
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    secret_key = get_random_string(20, chars)
+    return hashlib.sha256((secret_key + username).encode('utf-8')).hexdigest()
+
+"""
+Sign-up view creates a user from the entered SignUpForm and then sends the user
+an email using a generated key to ensure the user has secure access to the said
+email account.
 """
 def signupView(request):
-    return render(request,'',{})
+    if request.user.is_authenticated():
+        return redirect('logbook:index')
+    '''
+    View for handling student registration
+    '''
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            data = {}
+            data['username'] = form.cleaned_data['username']
+            data['email'] = form.cleaned_data['email']
+            data['password'] = form.cleaned_data['password']
+            data['activation_key'] = generate_activation_key(data['username'])
+            
+            data['email_path']="email_templates/ActivationEmail.txt"
+            data['email_subject']="Activate your account"
+
+            form.sendVerifyEmail(data)
+            form.save(data)
+
+            request.session['registered']=True #For display purposes
+            return redirect('logbook:login')
+    else:
+        form = SignupForm()
+    return render(request, 'signup.html', {'signupForm':form})
 
 """
 Manages the logging in of a user via django.auth functions.
