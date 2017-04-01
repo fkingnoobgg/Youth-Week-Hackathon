@@ -1,6 +1,7 @@
 # Django Imports
 from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponse
 from django.urls import reverse
 
@@ -52,7 +53,9 @@ def loginView(request):
     return render(request, 'login.html', {'loginForm':form})
 
 """
-Handles logging out of a user.
+Handles ending of a user's session.
 """
+@login_required
 def logoutView(request):
-    return render(request, 'logout.html', {})
+    logout(request)
+    return redirect('logbook:login')
