@@ -6,6 +6,11 @@
 
 {% block titleblock %}Welcome{% endblock %}
 
+{% block styleblock %}
+    #map {width: 100%; height: 100%;}
+   
+{% endblock %}
+
 {% block bodyblock %}
 <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="col-xs-12 col-sm-12 col-md-6 text-center">
@@ -51,6 +56,6 @@
 </div>
 <script src="{% static 'js/voting.js' %}"></script>
 <script src="{% static 'js/map.js' %}"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4kxPtJQxf_EQfqu_4UP72UGrViHLUYwY&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVXZ05W6brklnhdVKcSCXte-og2uTZOyM&callback=initMap">
 </script>
 {% endblock %}
