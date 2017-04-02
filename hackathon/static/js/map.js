@@ -8,6 +8,27 @@ function submitNode() {
     });
 }
 
+var markers = [];
+
+
+
+function addHotspotsToMap(){
+	$ajax({
+		type: "GET",
+		url: "./query_node/",
+		dataType: "json",
+		success: function(jsonHotspotList){
+			for (i=0; i < jsonHotspotList.length; i++){
+				var lat = jsonHotspotList['lat'];
+				var lng = jsonHotspotList['lng'];
+				var id = jsonHotspotList['id'];
+				var name = jsonHotspotList['name'];
+				markers.add({'id': id, 'marker':new google.maps.Marker({title: name; position: {'lat': lat, 'lng': lng}})});
+			}
+		}
+
+	
+}
 
 function getCookie(name) {
 	var cookieValue = null;
@@ -42,6 +63,7 @@ $.ajaxSetup({
 	}
 });
 
+
 function initMap() {
 	var myLatLng = {lat: -25.363, lng: 131.044};
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -64,5 +86,10 @@ function initMap() {
 	google.maps.event.addListener(infoWindow,'closeclick',function(){
 		submitMarker.setMap(null);
 	});
+	
+	addHotspotsToMap();
+	for(i=0; i<markers.length;i++){
+		markers[i]['marker'].setMap(map);
+	}
 }
 
