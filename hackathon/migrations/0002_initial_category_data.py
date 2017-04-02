@@ -4,6 +4,23 @@ from __future__ import unicode_literals
 
 from django.db import migrations
 
+cats = [
+    "Hotspot",
+    "Service"
+]
+
+#As shown here https://docs.djangoproject.com/en/1.10/ref/migration-operations/#django.db.migrations.operations.RunPython
+def forwards_func(apps, schema_editor):
+    Category = apps.get_model("logbook", "Category")
+    db_alias = schema_editor.connection.alias
+    Category.objects.using(db_alias).bulk_create([Category(name=cat) for cat in cats])
+
+def reverse_func(apps, schema_editor):
+    Category = apps.get_model("logbook", "Category")
+    db_alias = schema_editor.connection.alias
+    for cat in cats:
+        Category.objects.using(db_alias).filter(name=cat).delete()
+
 
 class Migration(migrations.Migration):
 
@@ -12,4 +29,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(forwards_func, reverse_func)
     ]
