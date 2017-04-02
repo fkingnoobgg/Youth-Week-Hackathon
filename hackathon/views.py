@@ -54,13 +54,13 @@ Handles the submission of a new node that was created
 def nodeSubmitView(request):
     if request.is_ajax():
         if request.method == "POST":
-            node = Node()
+            """node = Node()
             node.user = request.user
             node.name = "test"
-            node.category = "Hotspot"
+            #node.category = "Hotspot"
             node.longitude = request.POST['lng']
             node.latitude = request.POST['lat']
-            node.save()
+            node.save()"""
             
             return redirect('hackathon:index')
         else:

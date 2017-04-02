@@ -6,6 +6,7 @@ app_name = 'hackathon'
 urlpatterns = [
     url(r'^$', views.indexView, name='index'),
     url(r'^faq/$', views.FAQView, name='faq' ),
+    url(r'^submit_node/$', views.nodeSubmitView, name='submit_node'),
     url(r'^add-hotspot/$', views.createHotSpotView, name='hotspot'),
     url(r'^add-service/$', views.createServiceView, name='service'),
     url(r'^submit_voting/$', views.voteView , name='voting'),
