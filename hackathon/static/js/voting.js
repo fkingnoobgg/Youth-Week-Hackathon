@@ -3,15 +3,20 @@ $(document).ready(function() {
 });
 
 function sendVote(id,action) {
+    console.log(id);
+    console.log(action);
+    
     $.ajax({
-       type:"get",
+       type: "post",
        url:"./submit_voting/",
        contentType:'application/json',
-       data: {node:id, user_action:action},
+       data: {node:id, action:action},
        success: function(output) {
-           
+           console.log(output)
        }
     });
+    
+    return false;
 }
 
 function getCookie(name) {

@@ -48,8 +48,8 @@ Used for handling the voting system
 @login_required
 def voteView(request):
     if request.is_ajax():
-        if request.method == POST:
-            print(request.POST['user_action'])
+        if request.method == "POST":
+            print(request.POST)
             if request.POST['action'] == 'up':
                 print('UP')
             return redirect('hackathon:index')

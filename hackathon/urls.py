@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^faq/$', views.FAQView, name='faq' ),
     url(r'^add-hotspot/$', views.createHotSpotView, name='hotspot'),
     url(r'^add-service/$', views.createServiceView, name='service'),
+    url(r'^submit_voting/$', views.voteView , name='voting'),
     url(r'^accounts/signup/$', views.signupView, name='signup'),
     url(r'^activate/(?P<key>.+)$', views.activationView, name = 'activate'),
     url(r'^new-activation-link/(?P<user_id>[0-9]+)/$', views.new_activation_link, name = 'new_activation_link'),
