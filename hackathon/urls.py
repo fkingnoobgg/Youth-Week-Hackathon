@@ -2,10 +2,12 @@ from django.conf.urls import url
 from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete 
 from . import views
 
-app_name = 'logbook'
+app_name = 'hackathon'
 urlpatterns = [
     url(r'^$', views.indexView, name='index'),
     url(r'^faq/$', views.FAQView, name='faq' ),
+    url(r'^add-hotspot/$', views.createHotSpotView, name='hotspot'),
+    url(r'^add-service/$', views.createServiceView, name='service'),
     url(r'^accounts/signup/$', views.signupView, name='signup'),
     url(r'^activate/(?P<key>.+)$', views.activationView, name = 'activate'),
     url(r'^new-activation-link/(?P<user_id>[0-9]+)/$', views.new_activation_link, name = 'new_activation_link'),

@@ -1,6 +1,7 @@
 #Django imports
 from django import forms
 from django.contrib.admin import widgets
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail, mail_admins
 from django.template import Context,Template
@@ -76,6 +77,15 @@ class LoginForm(forms.Form):
 class DeleteUserForm(forms.ModelForm):
     is_active = forms.BooleanField(label='', initial=False)
     
+
+"""
+Form used to create marker locations on the Location's Map
+"""
+class AddMarkerForm(forms.Form):
+    longitude = forms.FloatField()
+    latitude = forms.FloatField()
+    name = forms.CharField(label='', widget=forms.TextInput(attrs={'class':'form-control'}))
+    description = forms.CharField(label='', widget=forms.TextInput(attrs={'class':'form-control'}))
 
 """
 Below forms SetPasswordForm and ChangePasswordForm are taken directly
