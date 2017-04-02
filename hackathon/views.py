@@ -13,8 +13,12 @@ from .forms import *
 First thing anyone sees when the log into the site.
 """
 def indexView(request):
-    services = Node.objects.all()
-    return render(request, 'index.html', {'services':services})
+    if request.user.is_authenticated():
+        
+        services = Node.objects.all()
+        return render(request, 'index.html', {'services':services})
+    else:
+        return redirect('hackathon:login')
 
 """
 Answers any general problems people hav with the service.
@@ -49,9 +53,13 @@ Used for handling the voting system
 def voteView(request):
     if request.is_ajax():
         if request.method == "POST":
-            print(request.POST)
+            node = Node.objects.get(id=request.POST['node'])
             if request.POST['action'] == 'up':
-                print('UP')
+                node.votes_up = node.votes_up+1
+                node.save()
+            elif request.POST['action'] == 'down':
+                node.votes_down = node.votes_down+1
+                node.save()
             return redirect('hackathon:index')
     else:
         return HttpResponseForbidden()
