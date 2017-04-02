@@ -8,26 +8,24 @@ function submitNode() {
     });
 }
 
-var markers = [];
-
-
+var map;
 
 function addHotspotsToMap(){
-	$ajax({
+	$.ajax({
 		type: "GET",
 		url: "./query_node/",
 		dataType: "json",
 		success: function(jsonHotspotList){
 			for (i=0; i < jsonHotspotList.length; i++){
-				var lat = jsonHotspotList['lat'];
-				var lng = jsonHotspotList['lng'];
-				var id = jsonHotspotList['id'];
-				var name = jsonHotspotList['name'];
-				markers.add({'id': id, 'marker':new google.maps.Marker({title: name; position: {'lat': lat, 'lng': lng}})});
+				console.log(jsonHotspotList[i]);
+				var lat = jsonHotspotList[i]['lat'];
+				var lng = jsonHotspotList[i]['lng'];
+				var id = jsonHotspotList[i]['id'];
+				var name = jsonHotspotList[i]['name'];
+				new google.maps.Marker({title: name, position: {'lat': lat, 'lng': lng}}).setMap(map);
 			}
 		}
-
-	
+	});
 }
 
 function getCookie(name) {
@@ -66,14 +64,14 @@ $.ajaxSetup({
 
 function initMap() {
 	var myLatLng = {lat: -25.363, lng: 131.044};
-	var map = new google.maps.Map(document.getElementById('map'), {
+	map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: myLatLng
     });
-		
+
 	var submitMarker = new google.maps.Marker({position: {lat: 0, lng: 0}});
 	var infoWindow = new google.maps.InfoWindow({content: "if youre seein this its not working"});
-				
+
 	google.maps.event.addListener(map, 'click', function(event) {
 		submitMarker.setPosition(event.latLng);
 		submitMarker.setMap(map);
@@ -82,14 +80,10 @@ function initMap() {
 		infoWindow.setContent("<form><input type='hidden' id='lat' value='"+submitLat+"'><input type='hidden' id='lng' value='"+submitLng+"'><label for='name'>Hotspot Name</label><input type=text id='name' name='name'><p><label for='description'>Description</label><input type=text id='description' name='description'><p><input type='button' value='submit' id='submit' onclick='submitNode()'></form>");
 		infoWindow.open(map, submitMarker);
 	});
-	
+
 	google.maps.event.addListener(infoWindow,'closeclick',function(){
 		submitMarker.setMap(null);
 	});
-	
-	addHotspotsToMap();
-	for(i=0; i<markers.length;i++){
-		markers[i]['marker'].setMap(map);
-	}
-}
 
+	addHotspotsToMap();
+}

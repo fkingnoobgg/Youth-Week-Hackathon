@@ -51,7 +51,7 @@ def createHotSpotView(request):
 
 @login_required
 def nodeQueryView(request):
-    if request.is_ajax():
+    #if request.is_ajax():
         return HttpResponse(
             json.dumps([{
                 "id" : n.id,
@@ -61,8 +61,8 @@ def nodeQueryView(request):
             } for n in Node.objects.all()], cls=DjangoJSONEncoder),
             content_type = "application/json"
         )
-    else:
-        return HttpResponseForbidden()
+    #else:
+    #    return HttpResponseForbidden()
 
 """
 Handles the submission of a new node that was created
