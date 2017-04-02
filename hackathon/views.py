@@ -13,7 +13,8 @@ from .forms import *
 First thing anyone sees when the log into the site.
 """
 def indexView(request):
-    return render(request, 'index.html', {})
+    services = Node.objects.all()
+    return render(request, 'index.html', {'services':services})
 
 """
 Answers any general problems people hav with the service.
