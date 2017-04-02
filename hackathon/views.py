@@ -41,6 +41,20 @@ def createHotSpotView(request):
         NodeForm = AddMarkerForm()
         return render(request, '', {'hotspot_form':NodeForm})
 
+"""
+Used for handling the voting system
+"""
+@login_required
+def voteView(request):
+    if request.is_ajax():
+        if request.method == POST:
+            print(request.POST['user_action'])
+            if request.POST['action'] == 'up':
+                print('UP')
+            return redirect('hackathon:index')
+    else:
+        return HttpResponseForbidden()
+
 
 """
 Used for creating a service for the map
