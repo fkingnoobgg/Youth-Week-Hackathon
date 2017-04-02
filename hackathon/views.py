@@ -79,6 +79,8 @@ def nodeSubmitView(request):
             node.longitude = request.POST['lng']
             node.latitude = request.POST['lat']
 
+            node.save()
+
             return redirect('hackathon:index')
         else:
             return HttpResponseForbidden()
