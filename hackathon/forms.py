@@ -86,7 +86,7 @@ class AddMarkerForm(forms.Form):
     latitude = forms.FloatField()
     name = forms.CharField(label='', widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Name'}))
     description = forms.CharField(label='', widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Description'}))
-    category = forms.ModelChoiceField(queryset = Organisation.objects.all().order_by('name'), label='', empty_label='Choose Organisation...',
+    category = forms.ModelChoiceField(queryset = Category.objects.all().order_by('name'), label='', empty_label='Choose Organisation...',
                                               widget=forms.Select(attrs={'class':'form-control'}))
 """
 Below forms SetPasswordForm and ChangePasswordForm are taken directly
