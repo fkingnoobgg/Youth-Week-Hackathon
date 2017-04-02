@@ -18,10 +18,10 @@ class Category(models.Model):
 class Node(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
     latitude = models.FloatField(
-        validators = [MaxValueValidator(180), MinValueValidator(-180)]
+        validators = [MaxValueValidator(90), MinValueValidator(-90)]
     )
     longitude = models.FloatField(
-        validators=[MaxValueValidator(90), MinValueValidator(-90)]
+        validators=[MaxValueValidator(180), MinValueValidator(-180)]
     )
     name = models.CharField(max_length=30)
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
