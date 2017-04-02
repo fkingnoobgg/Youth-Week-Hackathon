@@ -1,1 +1,1 @@
-web: python website/manage.py runserver 0.0.0.0:$PORT
+web: python website/manage.py runserver https://cchackathon2017.herokuapp.com:443
