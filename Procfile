@@ -1,1 +1,0 @@
-web: python manage.py runserver cchackathon2017.herokuapp.com:443
