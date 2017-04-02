@@ -4,33 +4,54 @@
 
 {% load static %}
 
+{% block styleblock %}
+    #map {width: 100%; height: 100%;}
+   
+{% endblock %}
 {% block titleblock %}Welcome{% endblock %}
 
 {% block bodyblock %}
 <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="col-xs-12 col-sm-12 col-md-6 text-center">
         <h1 class="page-header">Map of Services</h1>
-        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27072.989876775424!2d115.80752385000001!3d-31.984661050000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sau!4v1491041103318" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div id="map"></div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 text-center">
         <h1 class="page-header">List of Services</h1>
         {% if services %}
-            {% for service in services %}
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="hidden">{{ service.id }}</div>
-                    <div class="col-md-3">{{ service.name }}</div>
-                    <div class="col-md-4">{{ servce.description }}</div>
-                    <div class="col-md-2" style="display:inline;">{{ service.category }}</div>
-                    <div class="button-group col-md-3" style="display:inline">
-                        <button class="btn btn-primary success" id="up-{{service.id}}" onclick="sendVote('{{service.id}}','up')"><span class="glyphicon glyphicon-arrow-up"></span> {{service.votes_up }}</button>
-                        <button class="btn btn-primary danger" id="down-{{service.id}}" onclick="sendVote('{{service.id}}','down')"><span class="glyphicon glyphicon-arrow-down"></span> {{ service.votes_down}}</button>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+
+                    <tr>
+                        <div class="hidden">{{ service.id }}</div>
+                        <td>
+                            {{ service.name }}
+                        </td>
+                        <td>
+                            {{ service.description }}
+                        </td>
+                        <td>
+                            {{ service.category }}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary success" id="up-{{service.id}}" onclick="sendVote('{{service.id}}','up')"><span class="glyphicon glyphicon-arrow-up"></span> {{service.votes_up }}</button>
+                            <button class="btn btn-primary danger" id="down-{{service.id}}" onclick="sendVote('{{service.id}}','down')"><span class="glyphicon glyphicon-arrow-down"></span> {{ service.votes_down}}</button>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+        	</table>
         {% endif %}
-    </div>
 </div>
 <script src="{% static 'js/voting.js' %}"></script>
 <script src="{% static 'js/map.js' %}"></script>
