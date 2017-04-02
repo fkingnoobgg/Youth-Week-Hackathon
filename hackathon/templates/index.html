@@ -23,8 +23,8 @@
                     <div class="col-md-4">{{ servce.description }}</div>
                     <div class="col-md-2" style="display:inline;">{{ service.category }}</div>
                     <div class="button-group col-md-3" style="display:inline">
-                        <button class="btn btn-primary success" onclick="sendVote('{{service.id}}','up')"><span class="glyphicon glyphicon-arrow-up"></span> {{service.votes_up }}</button>
-                        <button class="btn btn-primary danger" onclick="sendVote('{{service.id}}','down')"><span class="glyphicon glyphicon-arrow-down"></span> {{ service.votes_down}}</button>
+                        <button class="btn btn-primary success" id="up-{{service.id}}" onclick="sendVote('{{service.id}}','up')"><span class="glyphicon glyphicon-arrow-up"></span> {{service.votes_up }}</button>
+                        <button class="btn btn-primary danger" id="down-{{service.id}}" onclick="sendVote('{{service.id}}','down')"><span class="glyphicon glyphicon-arrow-down"></span> {{ service.votes_down}}</button>
                     </div>
                 </div>
             </div>

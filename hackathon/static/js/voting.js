@@ -3,18 +3,20 @@ $(document).ready(function() {
 });
 
 function sendVote(id,action) {
-    console.log(id);
-    console.log(action);
-    
     $.ajax({
        type: "post",
        url:"./submit_voting/",
-       contentType:'application/json',
        data: {node:id, action:action},
        success: function(output) {
-           console.log(output)
        }
     });
+    if (action == 'up') {
+        var numVotes = $('#up-'+id).text();
+        $('#up-'+id).html("<span class='glyphicon glyphicon-arrow-up'></span> "+(parseInt(numVotes)+1));
+    } else {
+        var numVotes = $('#down-'+id).text();
+        $('#down-'+id).html("<span class='glyphicon glyphicon-arrow-down'></span> "+(parseInt(numVotes)+1));
+    }
     
     return false;
 }
