@@ -1,1 +1,1 @@
-web: python website/manage.py runserver https://cchackathon2017.herokuapp.com:443
+web: python manage.py runserver https://cchackathon2017.herokuapp.com:443
