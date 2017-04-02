@@ -11,12 +11,12 @@ cats = [
 
 #As shown here https://docs.djangoproject.com/en/1.10/ref/migration-operations/#django.db.migrations.operations.RunPython
 def forwards_func(apps, schema_editor):
-    Category = apps.get_model("logbook", "Category")
+    Category = apps.get_model("hackathon", "Category")
     db_alias = schema_editor.connection.alias
     Category.objects.using(db_alias).bulk_create([Category(name=cat) for cat in cats])
 
 def reverse_func(apps, schema_editor):
-    Category = apps.get_model("logbook", "Category")
+    Category = apps.get_model("hackathon", "Category")
     db_alias = schema_editor.connection.alias
     for cat in cats:
         Category.objects.using(db_alias).filter(name=cat).delete()
