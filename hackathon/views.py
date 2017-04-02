@@ -49,19 +49,6 @@ def createHotSpotView(request):
         NodeForm = AddMarkerForm()
         return render(request, '', {'hotspot_form':NodeForm})
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-=======
->>>>>>> Updates to views
-=======
->>>>>>> Added endpoint for quering nodes
-@login_required
-def nodeQueryView(request):
-    #if request.is_ajax():
-=======
 @login_required
 def nodeQueryView(request):
     if request.is_ajax():
@@ -91,7 +78,6 @@ def nodeSubmitView(request):
             node.category = Category.objects.filter(name="Hotspot")[0]
             node.longitude = request.POST['lng']
             node.latitude = request.POST['lat']
-            node.save()
 
             return redirect('hackathon:index')
         else:
