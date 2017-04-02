@@ -6,6 +6,7 @@ from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpRespons
 from django.utils.crypto import get_random_string
 from django.urls import reverse
 import hashlib
+from django.db.models import F, Max
 
 from .forms import *
 
@@ -15,7 +16,7 @@ First thing anyone sees when the log into the site.
 def indexView(request):
     if request.user.is_authenticated():
         
-        services = Node.objects.all()
+        services = Node.objects.filter().order_by(F('votes_down')-F('votes_up'))
         return render(request, 'index.html', {'services':services})
     else:
         return redirect('hackathon:login')
