@@ -27,6 +27,39 @@ Handles the activation of the user's key.
 def activationView(request, key):
     return render(request, 'activation.html', {})
 
+@login_required
+def createHotSpotView(request):
+    if request.method == "POST":
+        NodeForm = AddMarkerForm(request.POST)
+        if NodeForm.is_valid():
+            htspt = HotSpot()
+            htspt.node = NodeForm.cleaned_data['node']
+            htspt.save()
+
+            NodeForm.save()
+    else:
+        NodeForm = AddMarkerForm()
+        return render(request, '', {'hotspot_form':NodeForm})
+
+
+"""
+Used for creating a service for the map
+"""
+@login_required
+def createServiceView(request):
+    if request.method == "POST":
+        NodeForm = AddMarkerForm(request.POST)
+        if NodeForm.is_valid():
+            srvc = Service()
+            srvc.node = NodeForm.cleaned_data['node']
+            srvc.save()
+
+            NodeForm.save()
+    else:
+        NodeForm = AddMarkerForm()
+        return render(request, '', {'hotspot_form':NodeForm})
+        
+
 """
 Sends a new activation link to the user signing up for the service.
 """
@@ -48,7 +81,7 @@ email account.
 """
 def signupView(request):
     if request.user.is_authenticated():
-        return redirect('logbook:index')
+        return redirect('hackathon:index')
     '''
     View for handling student registration
     '''
@@ -68,7 +101,7 @@ def signupView(request):
             form.save(data)
 
             request.session['registered']=True #For display purposes
-            return redirect('logbook:login')
+            return redirect('hackathon:login')
     else:
         form = SignupForm()
     return render(request, 'signup.html', {'signupForm':form})
@@ -83,7 +116,7 @@ def loginView(request):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('logbook:index')
+                return redirect('hackathon:index')
     else:
         form = LoginForm()
     return render(request, 'login.html', {'loginForm':form})
@@ -94,4 +127,4 @@ Handles ending of a user's session.
 @login_required
 def logoutView(request):
     logout(request)
-    return redirect('logbook:login')
+    return redirect('hackathon:login')
