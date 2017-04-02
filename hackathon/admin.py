@@ -5,8 +5,11 @@ from .models import *
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name','description']
 
-    @admin.register(HTUser)
-    class HTUserAdmin(admin.ModelAdmin):
+    def name(self, obj):
+        return obj.name
+
+@admin.register(HTUser)
+class HTUserAdmin(admin.ModelAdmin):
         list_display = ['user','activation_key']
 
 @admin.register(Node)
