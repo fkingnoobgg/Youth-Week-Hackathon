@@ -1,14 +1,34 @@
 function submitNode() {
 	$.ajax({
-		type: "post",
-		url:"./submit_node/",
-		data: {lat: document.getElementById('lat'), lng: document.getElementById('lng')},
-		success: function(output) {
-			}
-	});    
-	return false;
+       type: "post",
+       url:"./submit_node/",
+       data: {lat:$('#lat').val(), lng: $('#lng').val(), name: $('#name').val(), description: $('#description').val()},
+       success: function(output) {
+       }
+    });
 }
-$('#submit').onclick=submitNode();
+
+var markers = [];
+
+
+
+function addHotspotsToMap(){
+	$ajax({
+		type: "GET",
+		url: "./query_node/",
+		dataType: "json",
+		success: function(jsonHotspotList){
+			for (i=0; i < jsonHotspotList.length; i++){
+				var lat = jsonHotspotList['lat'];
+				var lng = jsonHotspotList['lng'];
+				var id = jsonHotspotList['id'];
+				var name = jsonHotspotList['name'];
+				markers.add({'id': id, 'marker':new google.maps.Marker({title: name; position: {'lat': lat, 'lng': lng}})});
+			}
+		}
+
+	
+}
 
 function getCookie(name) {
 	var cookieValue = null;
@@ -43,6 +63,7 @@ $.ajaxSetup({
 	}
 });
 
+
 function initMap() {
 	var myLatLng = {lat: -25.363, lng: 131.044};
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -58,8 +79,17 @@ function initMap() {
 		submitMarker.setMap(map);
 		var submitLat = submitMarker.getPosition().lat();
 		var submitLng = submitMarker.getPosition().lng();
-		infoWindow.setContent("<form><input type='text' id='lat' value='"+submitLat+"'><p><input type='text' id='lng' value='"+submitLng+"'><p><input type='button' value='submit' id='submit'></form>");
+		infoWindow.setContent("<form><input type='hidden' id='lat' value='"+submitLat+"'><input type='hidden' id='lng' value='"+submitLng+"'><label for='name'>Hotspot Name</label><input type=text id='name' name='name'><p><label for='description'>Description</label><input type=text id='description' name='description'><p><input type='button' value='submit' id='submit' onclick='submitNode()'></form>");
 		infoWindow.open(map, submitMarker);
 	});
+	
+	google.maps.event.addListener(infoWindow,'closeclick',function(){
+		submitMarker.setMap(null);
+	});
+	
+	addHotspotsToMap();
+	for(i=0; i<markers.length;i++){
+		markers[i]['marker'].setMap(map);
+	}
 }
 

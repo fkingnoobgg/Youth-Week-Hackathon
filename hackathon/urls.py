@@ -1,11 +1,12 @@
 from django.conf.urls import url
-from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete 
+from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 from . import views
 
 app_name = 'hackathon'
 urlpatterns = [
     url(r'^$', views.indexView, name='index'),
     url(r'^faq/$', views.FAQView, name='faq' ),
+    url(r'^query_node/$', views.nodeQueryView, name='query_node'),
     url(r'^submit_node/$', views.nodeSubmitView, name='submit_node'),
     url(r'^add-hotspot/$', views.createHotSpotView, name='hotspot'),
     url(r'^add-service/$', views.createServiceView, name='service'),

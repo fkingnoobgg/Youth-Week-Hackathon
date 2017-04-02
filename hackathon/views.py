@@ -2,10 +2,12 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponse
+from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponse, JsonResponse
 from django.utils.crypto import get_random_string
 from django.urls import reverse
+from django.core.serializers.json import DjangoJSONEncoder
 import hashlib
+import json
 from django.db.models import F, Max
 
 from .forms import *
@@ -15,7 +17,7 @@ First thing anyone sees when the log into the site.
 """
 def indexView(request):
     if request.user.is_authenticated():
-        
+
         services = Node.objects.filter().order_by(F('votes_down')-F('votes_up'))
         return render(request, 'index.html', {'services':services})
     else:
@@ -47,6 +49,21 @@ def createHotSpotView(request):
         NodeForm = AddMarkerForm()
         return render(request, '', {'hotspot_form':NodeForm})
 
+@login_required
+def nodeQueryView(request):
+    if request.is_ajax():
+        return HttpResponse(
+            json.dumps([{
+                "id" : n.id,
+                "name" : n.name,
+                "lat" : n.latitude,
+                "lng" : n.longitude
+            } for n in Node.objects.all()], cls=DjangoJSONEncoder),
+            content_type = "application/json"
+        )
+    else:
+        return HttpResponseForbidden()
+
 """
 Handles the submission of a new node that was created
 """
@@ -54,14 +71,16 @@ Handles the submission of a new node that was created
 def nodeSubmitView(request):
     if request.is_ajax():
         if request.method == "POST":
-            """node = Node()
+            node = Node()
             node.user = request.user
-            node.name = "test"
-            #node.category = "Hotspot"
+            node.name = request.POST['name']
+            node.description = request.POST['description']
+            node.category = Category.objects.filter(name="Hotspot")[0]
             node.longitude = request.POST['lng']
             node.latitude = request.POST['lat']
-            node.save()"""
-            
+
+            node.save()
+
             return redirect('hackathon:index')
         else:
             return HttpResponseForbidden()
@@ -101,7 +120,7 @@ def createServiceView(request):
     else:
         NodeForm = AddMarkerForm()
         return render(request, '', {'hotspot_form':NodeForm})
-        
+
 
 """
 Sends a new activation link to the user signing up for the service.
@@ -136,7 +155,7 @@ def signupView(request):
             data['email'] = form.cleaned_data['email']
             data['password'] = form.cleaned_data['password']
             data['activation_key'] = generate_activation_key(data['username'])
-            
+
             data['email_path']="email_templates/ActivationEmail.txt"
             data['email_subject']="Activate your account"
 
