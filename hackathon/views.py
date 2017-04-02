@@ -57,8 +57,8 @@ def nodeSubmitView(request):
             node.user = request.user
             node.name = "test"
             node.category = "Hotspot"
-            node.longitude = request.POST['longitude']
-            node.latitude = request.POST['latitude']
+            node.longitude = request.POST['lng']
+            node.latitude = request.POST['lat']
             node.save()
             
             return redirect('hackathon:index')
