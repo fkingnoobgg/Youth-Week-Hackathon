@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations
 
 cats = [
+<<<<<<< HEAD
     "Administration/Clerical",
     "Arts/Crafts/Performing",
     "Campaigning/Lobbying",
@@ -29,6 +30,10 @@ cats = [
     "Working with Kids/Youth",
     "Working with the Aged",
     "Writing/Editing/Research"
+=======
+    "Hotspot",
+    "Service"
+>>>>>>> Initial data for categories
 ]
 
 #As shown here https://docs.djangoproject.com/en/1.10/ref/migration-operations/#django.db.migrations.operations.RunPython
