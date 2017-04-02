@@ -1,14 +1,13 @@
 function submitNode() {
 	$.ajax({
-		type: "post",
-		url:"./submit_node/",
-		data: {lat: document.getElementById('lat'), lng: document.getElementById('lng')},
-		success: function(output) {
-			}
-	});    
-	return false;
+       type: "post",
+       url:"./submit_node/",
+       data: {lat:$('#lat').val(), lng: $('#lng').val(), name: $('#name').val(), description: $('#description').val()},
+       success: function(output) {
+       }
+    });
 }
-$('#submit').onclick=submitNode();
+
 
 function getCookie(name) {
 	var cookieValue = null;
@@ -58,8 +57,12 @@ function initMap() {
 		submitMarker.setMap(map);
 		var submitLat = submitMarker.getPosition().lat();
 		var submitLng = submitMarker.getPosition().lng();
-		infoWindow.setContent("<form><input type='text' id='lat' value='"+submitLat+"'><p><input type='text' id='lng' value='"+submitLng+"'><p><input type='button' value='submit' id='submit'></form>");
+		infoWindow.setContent("<form><input type='hidden' id='lat' value='"+submitLat+"'><input type='hidden' id='lng' value='"+submitLng+"'><label for='name'>Hotspot Name</label><input type=text id='name' name='name'><p><label for='description'>Description</label><input type=text id='description' name='description'><p><input type='button' value='submit' id='submit' onclick='submitNode()'></form>");
 		infoWindow.open(map, submitMarker);
+	});
+	
+	google.maps.event.addListener(infoWindow,'closeclick',function(){
+		submitMarker.setMap(null);
 	});
 }
 
