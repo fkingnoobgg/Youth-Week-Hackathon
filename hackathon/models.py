@@ -8,6 +8,10 @@ class HTUser(models.Model):
     def __str__(self):
         return str(self.user)
 
+class Category(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=300)
+
 class Node(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
     longitude = models.FloatField(
@@ -16,7 +20,8 @@ class Node(models.Model):
     latitude = models.FloatField(
         validators = [MaxValueValidator(180), MinValueValidator(-180)]
     )
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=30)
+    category = models.ForeignKey(Category, on_delete = models.CASCADE)
     description = models.CharField(max_length=300)
     votes_up = models.IntegerField(
         default = 0,
@@ -26,16 +31,5 @@ class Node(models.Model):
         default = 0,
         validators = [MinValueValidator(0)]
     )
-    time_created = models.DateTimeField(auto_now_add=True)
-    time_modified = models.DateTimeField(auto_now=True)
-
-class Hotspot(models.Model):
-    node = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
-    time_created = models.DateTimeField(auto_now_add=True)
-    time_modified = models.DateTimeField(auto_now=True)
-
-
-class Service(models.Model):
-    node = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
     time_created = models.DateTimeField(auto_now_add=True)
     time_modified = models.DateTimeField(auto_now=True)
