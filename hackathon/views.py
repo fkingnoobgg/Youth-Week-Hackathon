@@ -13,7 +13,8 @@ from .forms import *
 First thing anyone sees when the log into the site.
 """
 def indexView(request):
-    return render(request, 'index.html', {})
+    services = Node.objects.all()
+    return render(request, 'index.html', {'services':services})
 
 """
 Answers any general problems people hav with the service.
@@ -40,6 +41,20 @@ def createHotSpotView(request):
     else:
         NodeForm = AddMarkerForm()
         return render(request, '', {'hotspot_form':NodeForm})
+
+"""
+Used for handling the voting system
+"""
+@login_required
+def voteView(request):
+    if request.is_ajax():
+        if request.method == POST:
+            print(request.POST['user_action'])
+            if request.POST['action'] == 'up':
+                print('UP')
+            return redirect('hackathon:index')
+    else:
+        return HttpResponseForbidden()
 
 
 """
