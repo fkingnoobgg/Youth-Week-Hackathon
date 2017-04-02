@@ -47,6 +47,25 @@ def createHotSpotView(request):
         return render(request, '', {'hotspot_form':NodeForm})
 
 """
+Handles the submission of a new node that was created
+"""
+@login_required
+def nodeSubmitView(request):
+    if request.is_ajax():
+        if request.method == "POST":
+            node = Node()
+            node.user = request.user
+            node.name = "test"
+            node.category = "Hotspot"
+            node.longitude = request.POST['longitude']
+            node.latitude = request.POST['latitude']
+            node.save()
+            
+            return redirect('hackathon:index')
+        else:
+            return HttpResponseForbidden()
+
+"""
 Used for handling the voting system
 """
 @login_required
