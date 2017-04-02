@@ -8,9 +8,9 @@
             "longitude": 115.85677,
             "name": "Passages Resource Centre",
             "category": 2,
-            "description": "Free tea, coffee & snacks\nPhone: 9328 7682\nWhen: Mon - Fri 9:00am to 1:00pm\nWhere: 33 Shenton St Northbridge",
-            "votes_up": 72,
-            "votes_down": 30,
+            "description": "Free basic breakfast\nAges: Youth 12 to 25 years\nPhone: 9228 1478\nWhen: Mon - Fri 9:00am to 11:00am\nWhere: 22 Palmerston St Northbridge",
+            "votes_up": 81,
+            "votes_down": 18,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -24,9 +24,9 @@
             "longitude": 115.8548813,
             "name": "Ruah Day Centre",
             "category": 2,
-            "description": "Low cost\nPhone: 9260 9500\nWhen: Mon - Fri 9:30am to 1:30pm\nWhere: 333 William St Northbridge",
-            "votes_up": 92,
-            "votes_down": 11,
+            "description": "Free tea, coffee & snacks\nPhone: 9328 7682\nWhen: Mon - Fri 9:00am to 1:00pm\nWhere: 33 Shenton St Northbridge",
+            "votes_up": 56,
+            "votes_down": 20,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -40,9 +40,9 @@
             "longitude": 115.86108,
             "name": "The Salvation Army Coffee Booth Cafe",
             "category": 2,
-            "description": "Free\nPhone: 9260 9500\nWhen: Mon - Sun 8:00am or 8:30am\nWhere: Supreme Court Gardens, Wellington Square, East Perth",
-            "votes_up": 58,
-            "votes_down": 9,
+            "description": "Low cost\nPhone: 9260 9500\nWhen: Mon - Fri 9:30am to 1:30pm\nWhere: 333 William St Northbridge",
+            "votes_up": 60,
+            "votes_down": 25,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -56,9 +56,9 @@
             "longitude": 115.8599398,
             "name": "The Salvation Army Doorways Soup Run",
             "category": 2,
-            "description": "Free & low cost\nPhone: 9220 1288\nWhen: Mon - Fri 7:00am to 12:00 noon\nWhere: 6/5 Aberdeen Street Northbridge",
-            "votes_up": 81,
-            "votes_down": 11,
+            "description": "Free\nPhone: 9260 9500\nWhen: Mon - Sun 8:00am or 8:30am\nWhere: Supreme Court Gardens, Wellington Square, East Perth",
+            "votes_up": 33,
+            "votes_down": 30,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -72,9 +72,9 @@
             "longitude": 115.86108,
             "name": "Tranby Day Centre - UnitingCare West",
             "category": 2,
-            "description": "Low cost\nPhone: 0411 686 799\nWhen: Mon - Fri 11:30am to 2:30pm\nWhere: 194 William St Northbridge",
-            "votes_up": 52,
-            "votes_down": 2,
+            "description": "Free & low cost\nPhone: 9220 1288\nWhen: Mon - Fri 7:00am to 12:00 noon\nWhere: 6/5 Aberdeen Street Northbridge",
+            "votes_up": 1,
+            "votes_down": 29,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -84,13 +84,13 @@
         "pk": 6,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.949495,
+            "longitude": 115.859038,
             "name": "Govindas Hare Krishna Food For Life",
             "category": 2,
-            "description": "Low cost meals & refreshments\nAges: 55s & over\nPhone: 9461 3550\nWhen: Mon - Fri 8:30am - 3:30pm\nWhere: Upper Level Concourse Perth Railway Station Complex 378 Wellington St Perth",
-            "votes_up": 53,
-            "votes_down": 34,
+            "description": "Low cost\nPhone: 0411 686 799\nWhen: Mon - Fri 11:30am to 2:30pm\nWhere: 194 William St Northbridge",
+            "votes_up": 0,
+            "votes_down": 1,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -100,13 +100,13 @@
         "pk": 7,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.951564,
+            "longitude": 115.860977,
             "name": "Citiplace Community Centre",
             "category": 2,
-            "description": "Free BBQ\nAges: Youth 12 to 25 years\nPhone: 9228 1478\nWhen: Fri 11:00am to 1:00pm\nWhere: 22 Palmerston St Northbridge",
-            "votes_up": 63,
-            "votes_down": 14,
+            "description": "Low cost meals & refreshments\nAges: 55s & over\nPhone: 9461 3550\nWhen: Mon - Fri 8:30am - 3:30pm\nWhere: Upper Level Concourse Perth Railway Station Complex 378 Wellington St Perth",
+            "votes_up": 60,
+            "votes_down": 2,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -116,13 +116,13 @@
         "pk": 8,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.94458,
+            "longitude": 115.85677,
             "name": "Passages Resource Centre",
             "category": 2,
-            "description": "Free\nPhone: 9328 8071\nWhen: Sat 5:30pm to 7:00pm\nWhere: 423 Beaufort St Highgate",
-            "votes_up": 44,
-            "votes_down": 21,
+            "description": "Free BBQ\nAges: Youth 12 to 25 years\nPhone: 9228 1478\nWhen: Fri 11:00am to 1:00pm\nWhere: 22 Palmerston St Northbridge",
+            "votes_up": 4,
+            "votes_down": 24,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -132,13 +132,13 @@
         "pk": 9,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.940247,
+            "longitude": 115.867974,
             "name": "St Albans Anglican Church",
             "category": 2,
-            "description": "Low Cost\nPhone: 0411 686 799\nWhen: Mon - Fri 3:45pm to 8:00pm\nWhere: 194 William St Northbridge",
-            "votes_up": 88,
-            "votes_down": 6,
+            "description": "Free\nPhone: 9328 8071\nWhen: Sat 5:30pm to 7:00pm\nWhere: 423 Beaufort St Highgate",
+            "votes_up": 99,
+            "votes_down": 33,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -148,13 +148,13 @@
         "pk": 10,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.949495,
+            "longitude": 115.859038,
             "name": "Govindas Hare Krishna Food For Life",
             "category": 2,
-            "description": "Free\nPhone: 1300 626 624\nWhen: Mon - Fri & Sun 5:00pm\nWhere: Weld Square cnr Beaufort & Newcastle Sts Perth",
-            "votes_up": 94,
-            "votes_down": 11,
+            "description": "Low Cost\nPhone: 0411 686 799\nWhen: Mon - Fri 3:45pm to 8:00pm\nWhere: 194 William St Northbridge",
+            "votes_up": 35,
+            "votes_down": 25,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -164,13 +164,13 @@
         "pk": 11,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.944903,
+            "longitude": 115.858119,
             "name": "Manna Industries",
             "category": 2,
-            "description": "Free\nPhone: 9325 5888\nWhen: Mon - Sun 7:00pm\nWhere: Corner of Pier and Wellington Sts Perth",
-            "votes_up": 51,
-            "votes_down": 8,
+            "description": "Free\nPhone: 1300 626 624\nWhen: Mon - Fri & Sun 5:00pm\nWhere: Weld Square cnr Beaufort & Newcastle Sts Perth",
+            "votes_up": 27,
+            "votes_down": 2,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -180,13 +180,13 @@
         "pk": 12,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.953049,
+            "longitude": 115.863764,
             "name": "Red Cross Soup Patrol",
             "category": 2,
-            "description": "Free\nPhone: 9325 5888\nWhen: Mon - Sun 7:20pm\nWhere: Red Cross HQ cnr Goderich St & Bishops Row East Perth",
-            "votes_up": 12,
-            "votes_down": 29,
+            "description": "Free\nPhone: 9325 5888\nWhen: Mon - Sun 7:00pm\nWhere: Corner of Pier and Wellington Sts Perth",
+            "votes_up": 22,
+            "votes_down": 5,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -196,13 +196,13 @@
         "pk": 13,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.95619,
+            "longitude": 115.870563,
             "name": "Red Cross Soup Patrol",
             "category": 2,
-            "description": "Free\nPhone: 9325 5888\nWhen: Mon - Sun 7:40pm\nWhere: Wellington Square East Perth (next to toilet block on Hill St)",
-            "votes_up": 75,
-            "votes_down": 13,
+            "description": "Free\nPhone: 9325 5888\nWhen: Mon - Sun 7:20pm\nWhere: Red Cross HQ cnr Goderich St & Bishops Row East Perth",
+            "votes_up": 95,
+            "votes_down": 4,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -212,13 +212,13 @@
         "pk": 14,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.954415,
+            "longitude": 115.871929,
             "name": "Red Cross Soup Patrol",
             "category": 2,
-            "description": "Free\nPhone: 9325 5888\nWhen: Mon - Sun 8:00pm\nWhere: 111 Stirling Street Perth (next to Church of Christ building)",
-            "votes_up": 4,
-            "votes_down": 0,
+            "description": "Free\nPhone: 9325 5888\nWhen: Mon - Sun 7:40pm\nWhere: Wellington Square East Perth (next to toilet block on Hill St)",
+            "votes_up": 3,
+            "votes_down": 3,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
@@ -228,29 +228,13 @@
         "pk": 15,
         "fields": {
             "user": 1,
-            "latitude": ,
-            "longitude": ,
+            "latitude": -31.94902,
+            "longitude": 115.86401,
             "name": "Red Cross Soup Patrol",
             "category": 2,
-            "description": "Free\nPhone: 0427 997 208\nWhen: \nWhere: ",
-            "votes_up": 28,
-            "votes_down": 10,
-            "time_created": "2017-04-02 03:29:01.147291",
-            "time_modified": "2017-04-02 03:29:01.147291"
-        }
-    },
-    {
-        "model": "hackathon.Node",
-        "pk": 16,
-        "fields": {
-            "user": 1,
-            "latitude": ,
-            "longitude": ,
-            "name": "The Salvation Army Street Outreach Service",
-            "category": 2,
-            "description": "",
-            "votes_up": 45,
-            "votes_down": 14,
+            "description": "Free\nPhone: 9325 5888\nWhen: Mon - Sun 8:00pm\nWhere: 111 Stirling Street Perth (next to Church of Christ building)",
+            "votes_up": 46,
+            "votes_down": 31,
             "time_created": "2017-04-02 03:29:01.147291",
             "time_modified": "2017-04-02 03:29:01.147291"
         }
